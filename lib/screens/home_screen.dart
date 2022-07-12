@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_erland/providers/movies_provider.dart';
+import 'package:peliculas_erland/search/search_delegate.dart';
 import 'package:peliculas_erland/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
+
+  
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +23,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search_outlined),
-            onPressed: () {}, 
+            onPressed: () => showSearch(context: context, delegate: MovieSearchDelegate()), 
             )
         ],
       ),
@@ -38,19 +41,28 @@ class HomeScreen extends StatelessWidget {
           MovieSlider(
             movies:moviesProvider.popularMovies,
             title : 'Populares', 
+            onNextPage: ()=> moviesProvider.getPopularMovies(),
           ),
-          CardSwiper(movies: moviesProvider.onDisplayMovies, ),
-          MovieSlider(movies:moviesProvider.popularMovies,
-            title : 'Populares',),
-          CardSwiper(movies: moviesProvider.onDisplayMovies, ),
-          MovieSlider(movies:moviesProvider.popularMovies,
-            title : 'Populares',),
-          CardSwiper(movies: moviesProvider.onDisplayMovies, ),
-          MovieSlider(movies:moviesProvider.popularMovies,
-            title : 'Populares',),
-          CardSwiper(movies: moviesProvider.onDisplayMovies, ),
-          MovieSlider(movies:moviesProvider.popularMovies,
-            title : 'Populares',),
+          // CardSwiper(movies: moviesProvider.onDisplayMovies, ),
+          // MovieSlider(movies:moviesProvider.popularMovies,
+          //   title : 'Populares',
+          //   onNextPage: ()=> moviesProvider.getPopularMovies(),
+          //   ),
+          // CardSwiper(movies: moviesProvider.onDisplayMovies, ),
+          // MovieSlider(movies:moviesProvider.popularMovies,
+          //   title : 'Populares',
+          //   onNextPage: ()=> moviesProvider.getPopularMovies(),
+          //   ),
+          // CardSwiper(movies: moviesProvider.onDisplayMovies, ),
+          // MovieSlider(movies:moviesProvider.popularMovies,
+          //   title : 'Populares',
+          //  onNextPage: ()=> moviesProvider.getPopularMovies(),
+          //  ),
+          // CardSwiper(movies: moviesProvider.onDisplayMovies, ),
+          // MovieSlider(movies:moviesProvider.popularMovies,
+          //   title : 'Populares',
+          //   onNextPage: ()=> moviesProvider.getPopularMovies(),
+          //   ),
 
           //Listado horizontal de películas
         ],
